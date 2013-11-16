@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>auto.js - auto complete with dictionary with ease.</title>
+  
+  <!-- Included CSS Files (Uncompressed) -->
+  <!--
+  <link rel="stylesheet" href="stylesheets/foundation.css">
+  -->
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <!-- <link rel="stylesheet" href="stylesheets/main_white.css"> -->
+  <!-- <link rel="stylesheet" href="stylesheets/main_light.css"> -->
+       <link rel="stylesheet" href="stylesheets/main.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+
+  <script src="javascripts/modernizr.foundation.js"></script>
+  <script src="../auto.max.min.js"></script>
+  
+  <!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans|Playfair+Display:400italic|Droid+Sans' rel='stylesheet' type='text/css' />
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+
+
+     <div class="row page_wrap" style="margin-top:-2px">
+     <!-- page wrap -->
+     <div class="twelve columns">
+      <!-- page wrap -->
+      
+       
+       <div class="row">  
+      
+        <div class="twelve columns header_nav" style="margin-bottom:0; box-shadow: none">
+        
+          <div class="twelve columns">
+          <br><br>
+              
+          </div>
+            
+        </div>
+
+          
+      </div><!-- END Header -->
+
+
+      <div class="heading_dots"><h1 class="heading_supersize"><span class="heading_center_bg">AUTO.JS</span></h1></div>
+      <div>
+        <div class="text_box">
+
+          <textarea id="text-area" class="text_area" placeholder="Type to see magic!" rows=3></textarea>
+
+        </div>  
+      <div class="explain-box five columns">
+      <ul>
+        <li>
+        <span><strong>< 6 kB minified and gzipped</strong>. </span> 
+        </li>
+        <li>
+        <span><strong>3</strong> options -<strong> micro, standard and max </strong></span> 
+        </li>
+        <li>
+          <span>autocomplete with ease.</span><br>
+        </li>
+        <blockquote>
+          window.onload = function () {<br>
+              var area = new AutoSuggestControl("text-area");    
+          }
+        </blockquote>
+      </ul>
+
+      </div>  
+      
+      <div class="row"> 
+        
+      
+      <div class="six columns large-offset-6">
+      <p style="text-align:center;">
+        <a href="https://github.com/atmb4u/autojs/auto.micro.min.js" class="button medium ">Micro (~6kB)</a>
+        <a href="https://github.com/atmb4u/autojs/auto.standard.min.js" class="button medium ">Standard (~17kB)</a>
+        <a href="https://github.com/atmb4u/autojs/auto.max.min.js" class="button medium ">Maximum (~54kB)</a>
+        <a href="#" class="button secondary ">View Source</a> 
+      </p>
+      <p class="small" style="text-align:center;">* all sizes minified and gzipped.</p>
+    </div>
+  </div>
+      
+      
+
+
+  
+</body>
+<script type="text/javascript">
+    window.onload = function () {
+        var oTextbox = new AutoSuggestControl("text-area");        
+    }
+</script>
+<br>
+<p class="small" style="text-align:center;">Copyright (c) 2013 <a href="http://profoundis.com">Profoundis Labs Pvt. Ltd</a></p>
+</html>
