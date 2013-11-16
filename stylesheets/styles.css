@@ -7,6 +7,16 @@ body {
   font-weight:300;
 }
 
+textarea{
+  font-family: Lato;
+  color: #333;
+  font-weight:300;
+  font-size: 21px;
+  font-weight: bold;
+  font-variant: normal;
+  width: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   color:#222;
   margin:0 0 20px;
@@ -103,7 +113,7 @@ header {
 
 header ul {
   list-style:none;
-  height:40px;
+  height:45px;
   
   padding:0;
   
