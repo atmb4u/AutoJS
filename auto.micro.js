@@ -77,9 +77,14 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/) {
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
 
     var iKeyCode = oEvent.keyCode;
-    //make sure not to interfere with non-character keys
-    if (iKeyCode < 32 || (iKeyCode >= 33 && iKeyCode <= 46) || (iKeyCode >= 112 && iKeyCode <= 123)) {
+    var evtobj = oEvent;
+    window.eventobj = evtobj;
+    if ((iKeyCode != 16 && iKeyCode < 32) || (iKeyCode >= 33 && iKeyCode <= 46) || (iKeyCode >= 112 && iKeyCode <= 123) || (iKeyCode == 65 && evtobj.ctrlKey) || (iKeyCode == 90 && evtobj.ctrlKey)) {
         //ignore
+        if (iKeyCode == 90 && evtobj.ctrlKey) {
+            // window.getSelection().deleteFromDocument();
+            // TODO: need to find a way to select the rest of the text and delete.
+        }
     } else {
         //request suggestions from the suggestion provider
         this.provider.requestSuggestions(this)
