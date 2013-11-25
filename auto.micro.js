@@ -77,13 +77,13 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/) {
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
 
     var iKeyCode = oEvent.keyCode;
-
+    // console.log(iKeyCode)
     //make sure not to interfere with non-character keys
     if (iKeyCode < 32 || (iKeyCode >= 33 && iKeyCode <= 46) || (iKeyCode >= 112 && iKeyCode <= 123)) {
         //ignore
     } else {
         //request suggestions from the suggestion provider
-        this.provider.requestSuggestions(this);
+        this.provider.requestSuggestions(this)
     }
 };
 
@@ -96,18 +96,20 @@ AutoSuggestControl.prototype.init = function () {
 
     //save a reference to this object
     var oThis = this;
-    
     //assign the onkeyup event handler
-    this.textbox.onkeyup = function (oEvent) {
+    lastDate = new Date();
+    oThis.textbox.onkeyup = function (oEvent) {
     
         //check for the proper location of the event object
         if (!oEvent) {
             oEvent = window.event;
-        }    
-        
-        //call the handleKeyUp() method with the event object
-        oThis.handleKeyUp(oEvent);
-    };
+        }        
+        newDate = new Date();
+        if (newDate.getTime() > lastDate.getTime() + 100) {
+                oThis.handleKeyUp(oEvent);
+                lastDate = newDate;
+        }
+        };
     
 };
 
@@ -153,7 +155,7 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
         var start = this.textbox.value.length - sSuggestion.replace(lastWord,"").length; 
         var end = this.textbox.value.length; 
         this.selectRange(start, end);
-    }
+        }
 };
 
 
