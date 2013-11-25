@@ -77,7 +77,6 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/) {
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
 
     var iKeyCode = oEvent.keyCode;
-    // console.log(iKeyCode)
     //make sure not to interfere with non-character keys
     if (iKeyCode < 32 || (iKeyCode >= 33 && iKeyCode <= 46) || (iKeyCode >= 112 && iKeyCode <= 123)) {
         //ignore
@@ -147,8 +146,10 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
     //check for support of typeahead functionality
     if (this.textbox.createTextRange || this.textbox.setSelectionRange){
         var lastSpace = this.textbox.value.lastIndexOf(" ");
+        var lastQuote = this.textbox.value.lastIndexOf("'");
+        var lastHypen = this.textbox.value.lastIndexOf("-");
         var lastEnter = this.textbox.value.lastIndexOf("\n");
-        var lastIndex = Math.max(lastSpace, lastEnter) + 1;
+        var lastIndex = Math.max(lastSpace, lastEnter, lastQuote, lastHypen) + 1;
         var contentStripped = this.textbox.value.substring(0, lastIndex);
         var lastWord = this.textbox.value.substring(lastIndex, this.textbox.value.length);
         this.textbox.value = contentStripped + sSuggestion; //.replace(lastWord,""); 
