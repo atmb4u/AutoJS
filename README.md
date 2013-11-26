@@ -7,6 +7,8 @@ AutoJS is a library to continuously autocomplete textarea based on a standard di
 Dictionary has been deviced based on researches and linguistic methods, keeping an eye on minimizing the size of the library.
 Complete project is written in plain js, with no external dependencies, and it's size is reduced to mere 6kb.
 
+### NB: Completes each suggested word on a right arrow (→) press. ###
+
 ## Installation and Usage ##
 ----------------------
 
