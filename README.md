@@ -1,5 +1,6 @@
 ## AutoJS v0.9.2 ##
 --------------
+
 ![AutoJS](https://raw.github.com/atmb4u/AutoJS/master/demo/images/autojs.png)
 
 AutoJS is a library to continuously autocomplete textarea based on a standard dictionary.
