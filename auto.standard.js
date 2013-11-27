@@ -1,23 +1,23 @@
 /*!
 * Copyright (c) 2013 Profoundis Labs Pvt. Ltd., and individual contributors.
-* 
+*
 * All rights reserved.
 */
-/* 
+/*
 * Redistribution and use in source and binary forms, with or without modification,
 * are permitted provided that the following conditions are met:
-* 
+*
 *     1. Redistributions of source code must retain the above copyright notice,
 *        this list of conditions and the following disclaimer.
-* 
+*
 *     2. Redistributions in binary form must reproduce the above copyright
 *        notice, this list of conditions and the following disclaimer in the
 *        documentation and/or other materials provided with the distribution.
-* 
+*
 *     3. Neither the name of autojs nor the names of its contributors may be used
 *        to endorse or promote products derived from this software without
 *        specific prior written permission.
-* 
+*
 * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -28,10 +28,10 @@
 * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-* 
+*
 * reuses a lot of code from Nicholas C. Zakas textfield autocomplete example found here
 * http://oak.cs.ucla.edu/cs144/projects/javascript/suggest1.html
-*     
+*
 */
 
 /*
@@ -39,17 +39,17 @@
  * @class
  * @scope public
  */
-function AutoSuggestControl(element_id /*:HTMLInputElement*/) {
+function AutoSuggestControl(id_or_element /*:HTMLInputElement*/) {
     this.provider /*:SuggestionProvider*/ = new wordSuggestions();
     /**
      * The textbox to capture, specified by element_id.
      * @scope private
      */
-    this.textbox /*:HTMLInputElement*/ = document.getElementById(element_id);
-    
+    this.textbox /*:HTMLInputElement*/ = typeof id_or_element == "string" ? document.getElementById(id_or_element) : id_or_element;
+
     //initialize the control
     this.init();
-    
+
 }
 
 
@@ -60,7 +60,7 @@ function AutoSuggestControl(element_id /*:HTMLInputElement*/) {
  * @param aSuggestions An array of suggestion strings.
  */
 AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/) {
-    
+
     //make sure there's at least one suggestion
 
     if (aSuggestions.length > 0) {
@@ -87,7 +87,7 @@ AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
         }
     } else {
         //request suggestions from the suggestion provider
-        this.provider.requestSuggestions(this)
+        this.provider.requestSuggestions(this);
     }
 };
 
@@ -103,18 +103,18 @@ AutoSuggestControl.prototype.init = function () {
     //assign the onkeyup event handler
     lastDate = new Date();
     oThis.textbox.onkeyup = function (oEvent) {
-    
+
         //check for the proper location of the event object
         if (!oEvent) {
             oEvent = window.event;
-        }        
+        }
         newDate = new Date();
         if (newDate.getTime() > lastDate.getTime() + 100) {
                 oThis.handleKeyUp(oEvent);
                 lastDate = newDate;
         }
         };
-    
+
 };
 
 /**
@@ -126,22 +126,22 @@ AutoSuggestControl.prototype.init = function () {
 AutoSuggestControl.prototype.selectRange = function (iStart /*:int*/, iLength /*:int*/) {
     //use text ranges for Internet Explorer
     if (this.textbox.createTextRange) {
-        var oRange = this.textbox.createTextRange(); 
-        oRange.moveStart("character", iStart); 
-        oRange.moveEnd("character", iLength);      
+        var oRange = this.textbox.createTextRange();
+        oRange.moveStart("character", iStart);
+        oRange.moveEnd("character", iLength);
         oRange.select();
-        
+
     //use setSelectionRange() for Mozilla
     } else if (this.textbox.setSelectionRange) {
         this.textbox.setSelectionRange(iStart, iLength);
-    }     
+    }
 
     //set focus back to the textbox
     this.textbox.focus();
-}; 
+};
 
 /**
- * Inserts a suggestion into the textbox, highlighting the 
+ * Inserts a suggestion into the textbox, highlighting the
  * suggested part of the text.
  * @scope private
  * @param sSuggestion The suggestion for the textbox.
@@ -158,9 +158,9 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
         var lastIndex = Math.max(lastSpace, lastEnter, lastQuote, lastHypen, lastDoubleQuote) + 1;
         var contentStripped = this.textbox.value.substring(0, lastIndex);
         var lastWord = this.textbox.value.substring(lastIndex, this.textbox.value.length);
-        this.textbox.value = contentStripped + sSuggestion; //.replace(lastWord,""); 
-        var start = this.textbox.value.length - sSuggestion.replace(lastWord,"").length; 
-        var end = this.textbox.value.length; 
+        this.textbox.value = contentStripped + sSuggestion; //.replace(lastWord,"");
+        var start = this.textbox.value.length - sSuggestion.replace(lastWord,"").length;
+        var end = this.textbox.value.length;
         this.selectRange(start, end);
         }
 };
@@ -168,7 +168,7 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
 
 
 /**
- * Request suggestions for the given autosuggest control. 
+ * Request suggestions for the given autosuggest control.
  * @scope protected
  * @param oAutoSuggestControl The autosuggest control to provide suggestions for.
  */
@@ -180,7 +180,7 @@ wordSuggestions.prototype.requestSuggestions = function (oAutoSuggestControl /*:
     var sTextboxValue = sTextboxLast;
     if (sTextboxValue.length > 0){
         //search for matching words
-        for (var i=0; i < this.words.length; i++) { 
+        for (var i=0; i < this.words.length; i++) {
             if (this.words[i].indexOf(sTextboxValue.toLowerCase()) == 0) {
                 if (this.words[i].indexOf(sTextboxValue) == 0){
                     aSuggestions.push(this.words[i]);
@@ -188,7 +188,7 @@ wordSuggestions.prototype.requestSuggestions = function (oAutoSuggestControl /*:
                 else if (this.words[i].indexOf(sTextboxValue.charAt(0).toLowerCase() + sTextboxValue.slice(1)) == 0) {
                     aSuggestions.push(this.words[i].charAt(0).toUpperCase() + this.words[i].slice(1));
                 }
-            } 
+            }
         }
     }
 
