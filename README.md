@@ -23,6 +23,8 @@ Its pretty straight forward.
           }
 ```
 
+You can either specify the id of the element or the selected element itself. Thanks to @samshull
+
 
 ## License ##
 -------
@@ -34,3 +36,14 @@ This software is licensed under the New BSD License. See the LICENSE file in the
 
 * Word Frequency and Word Length - Peter Norvig - http://norvig.com/mayzner.html 
 * AutoComplete barebones - Nicholas A. Zakas - http://oak.cs.ucla.edu/cs144/projects/javascript/suggest1.html
+
+
+## Developers ##
+-----------
+
+Welcome! Feel free to fork and send pull requests. There is a very good chance of getting accepted, if found working and useful.
+
+NB: Just run the ### compress.sh ### if possible(to update all min and compressed files), before you send in the pull request. 
+
+TODO: Have to separate the core and dictionaries, and generate each micro, standard and max editions through a script for the ease of development, and remove duplicate code.
+
