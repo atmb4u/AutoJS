@@ -109,7 +109,7 @@ AutoSuggestControl.prototype.init = function () {
             oEvent = window.event;
         }
         newDate = new Date();
-        if (newDate.getTime() > lastDate.getTime() + 100) {
+        if (newDate.getTime() > lastDate.getTime() + 200) {
                 oThis.handleKeyUp(oEvent);
                 lastDate = newDate;
         }
@@ -175,7 +175,7 @@ AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
 wordSuggestions.prototype.requestSuggestions = function (oAutoSuggestControl /*:AutoSuggestControl*/) {
     var aSuggestions = [];
     var sTextbox = oAutoSuggestControl.textbox.value;
-    var sTextboxSplit = sTextbox.split(/\W+/);
+    var sTextboxSplit = sTextbox.split(/[\s,]+/);
     var sTextboxLast = sTextboxSplit[sTextboxSplit.length-1];
     var sTextboxValue = sTextboxLast;
     if (sTextboxValue.length > 0){
