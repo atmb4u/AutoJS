@@ -1,0 +1,2 @@
+* Separate the core and dictionaries, and generate each micro, standard and max editions through a script for the ease of development, and remove duplicate code.
+

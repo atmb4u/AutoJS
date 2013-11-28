@@ -41,9 +41,10 @@ This software is licensed under the New BSD License. See the LICENSE file in the
 ## Developers ##
 -----------
 
-Welcome! Feel free to fork and send pull requests. There is a very good chance of getting accepted, if found working and useful.
+** Welcome! **
 
-NB: Just run the ### compress.sh ### if possible(to update all min and compressed files), before you send in the pull request. 
+Feel free to fork and send pull requests. There is a very good chance of getting accepted, if found working and useful.
 
-TODO: Have to separate the core and dictionaries, and generate each micro, standard and max editions through a script for the ease of development, and remove duplicate code.
+NB: Just run the ** compress.sh ** if possible (needs yuicompressor nodejs module and tar - for update all min and compressed files), before you send in the pull request. 
 
+Check TODO file or the issues logged into [github](https://github.com/atmb4u/AutoJS/issues)
