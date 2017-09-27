@@ -101,7 +101,7 @@ AutoSuggestControl.prototype.init = function () {
     //save a reference to this object
     var oThis = this;
     //assign the onkeyup event handler
-    lastDate = new Date();
+    var lastDate = new Date();
     oThis.textbox.onkeyup = function (oEvent) {
 
         //check for the proper location of the event object
