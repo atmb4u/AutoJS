@@ -108,7 +108,7 @@ AutoSuggestControl.prototype.init = function () {
         if (!oEvent) {
             oEvent = window.event;
         }
-        newDate = new Date();
+        var newDate = new Date();
         if (newDate.getTime() > lastDate.getTime() + 200) {
                 oThis.handleKeyUp(oEvent);
                 lastDate = newDate;
